@@ -1,0 +1,182 @@
+
+
+            # if self.boatPosition == "east":  # left the east shore
+            #     newCabbagesEst = self.east["cabbages"] - (cabbagesA + cabbagesB)
+            #     newGoatsEst = self.east["goats"] - (goatsA + goatsB)
+            #     newWolvesEst = self.east["wolves"] - (wolvesA + wolvesB)
+            #
+            #     #get outside everything that we have in store that we can make new combinaition
+            #     newCabbagesWest = cabbagesA + cabbagesB + self.west["cabbages"] + self.store["cabbages"]
+            #     newGoatsWest = goatsA + goatsB + self.west["goats"] + self.store["goats"]
+            #     newWolvesWest = wolvesA + wolvesB + self.west["wolves"] + self.store["wolves"]
+            #
+            #     maxCabbageStore = min(Graph.storeHouse,
+            #                           newCabbagesWest)  # the new number on the west shore
+            #     for nrCabbagesStore in range(maxCabbageStore + 1):
+            #         if nrCabbagesStore == 0:
+            #             maxGoatsStore = min(Graph.storeHouse, newGoatsWest)
+            #         else:
+            #             maxGoatsStore = 0
+            #         for nrGoatsStore in range(maxGoatsStore + 1):
+            #             if nrGoatsStore == 0 and nrCabbagesStore == 0:
+            #                 maxWolvesStore = min(Graph.storeHouse, newWolvesWest)
+            #             else:
+            #                 maxWolvesStore = 0
+            #
+            #             for nrWolvesStore in range(maxWolvesStore + 1):
+            #                 newCabbagesWest = newCabbagesWest - nrCabbagesStore
+            #                 newGoatsWest = newGoatsWest - nrGoatsStore
+            #                 newWolvesWest = newWolvesWest - nrWolvesStore
+            #                 # (self, parent, boatPosition, east, west, store, boat):
+            #                 newEast = {
+            #                     "wolves": newWolvesEst,
+            #                     "goats": newGoatsEst,
+            #                     "cabbages": newCabbagesEst
+            #                 }
+            #                 newWest = {
+            #                     "wolves": newWolvesWest,
+            #                     "goats": newGoatsWest,
+            #                     "cabbages": newCabbagesWest
+            #                 }
+            #                 store = {
+            #                     "cabbages": nrCabbagesStore,
+            #                     "goats": nrGoatsStore,
+            #                     "wolves": nrWolvesStore
+            #                 }
+            #                 boat = Boat({
+            #                     "wolves": wolvesA,
+            #                     "goats": goatsA,
+            #                     "cabbages": cabbagesA
+            #                 },
+            #                     {
+            #                         "wolves": wolvesB,
+            #                         "goats": goatsB,
+            #                         "cabbages": cabbagesB
+            #                     }
+            #                 )
+            #
+            #                 eastAfterEating = self.eat(newEast)
+            #
+            #                 if not self.areEnoughProducts(eastAfterEating, newWest, store):
+            #                     continue
+            #
+            #                 # parent, boatPosition, east, west, store, boat
+            #                 self.listSuccessors.append(
+            #                     CrossingNode(self, "west", eastAfterEating, newWest, store, boat
+            #                                  )
+            #                 )
+        # else:
+        #     # to do
+        #     newCabbagesEst = self.east["cabbages"] + (cabbagesA + cabbagesB)
+        #     newGoatsEst = self.east["goats"] + (goatsA + goatsB)
+        #     newWolvesEst = self.east["wolves"] + (wolvesA + wolvesB)
+        #
+        #     if self.store["cabbages"] > 0:
+        #         maxCabbagesFromStore = min(self.store["cabbages"],
+        #                                    cabbagesA + cabbagesB)  # if he would take everything that's in the store
+        #         if self.west["cabbages"] - (cabbagesA + cabbagesB) < 0:  # if he can not take just from the shore
+        #             minCabbagesFromStore = (cabbagesA + cabbagesB) - self.west["cabbages"]
+        #         else:
+        #             minCabbagesFromStore = 0
+        #     else:
+        #         maxCabbagesFromStore = 0
+        #         minCabbagesFromStore = 0
+        #     for nrCabbages in range(minCabbagesFromStore, maxCabbagesFromStore + 1):
+        #         if self.store["goats"] > 0:
+        #             maxGoatsFromStore = min(self.store["goats"], goatsA + goatsB)
+        #             if self.west["goats"] - (goatsA + goatsB) < 0:
+        #                 minGoatsFromStore = (goatsA + goatsB) - self.west["goats"]
+        #             else:
+        #                 minGoatsFromStore = 0
+        #         else:
+        #             minGoatsFromStore = 0
+        #             maxGoatsFromStore = 0
+        #         for nrGoats in range(minGoatsFromStore, maxGoatsFromStore + 1):
+        #             if self.store["wolves"] > 0:
+        #                 maxWolvesFromStore = min(self.store["wolves"], wolvesA + wolvesB)
+        #                 if self.west["wolves"] - (wolvesA + wolvesB) < 0:
+        #                     minWolvesFromStore = (wolvesA + wolvesB) - self.west["wolves"]
+        #                 else:
+        #                     minWolvesFromStore = 0
+        #             else:
+        #                 minWolvesFromStore = 0
+        #                 maxWolvesFromStore = 0
+        #
+        #             for nrWolves in range(minWolvesFromStore, maxWolvesFromStore + 1):
+        #                 newCabbagesWest = self.west["cabbages"] - (cabbagesA + cabbagesB - nrCabbages)
+        #                 newGoatsWest = self.west["goats"] - (goatsA + goatsB - nrGoats)
+        #                 newWolvesWest = self.west["wolves"] - (wolvesA + wolvesB - nrWolves)
+        #
+        #                 newEast = {
+        #                     "wolves": newWolvesEst,
+        #                     "goats": newGoatsEst,
+        #                     "cabbages": newCabbagesEst
+        #                 }
+        #                 newWest = {
+        #                     "wolves": newWolvesWest,
+        #                     "goats": newGoatsWest,
+        #                     "cabbages": newCabbagesWest
+        #                 }
+        #                 store = {
+        #                     "cabbages": self.store["cabbages"] - nrCabbages,
+        #                     "goats": self.store["goats"] - nrGoats,
+        #                     "wolves": self.store["wolves"] - nrWolves
+        #                 }
+        #                 boat = Boat({
+        #                     "wolves": wolvesA,
+        #                     "goats": goatsA,
+        #                     "cabbages": cabbagesA
+        #                 },
+        #                     {
+        #                         "wolves": wolvesB,
+        #                         "goats": goatsB,
+        #                         "cabbages": cabbagesB
+        #                     }
+        #                 )
+        #                 westAfterEating = self.eat(newWest)
+        #
+        #                 if not self.areEnoughProducts(newEast, westAfterEating, store):
+        #                     continue
+        #
+        #                 # parent, boatPosition, east, west, store, boat
+        #                 self.listSuccessors.append(
+        #                     CrossingNode(self, "east", newEast, westAfterEating, store, boat)
+        #                 )
+
+        # def BF(gr, nrSearchedSolutions=1):
+#     boat = Boat({
+#         "wolves": 0,
+#         "goats": 0,
+#         "cabbages": 0
+#     },
+#         {
+#             "wolves": 0,
+#             "goats": 0,
+#             "cabbages": 0
+#         })
+#     startNode = CrossingNode(
+#         None, Graph.initialBoatPosition, Graph.east, Graph.west, Graph.store, boat
+#     )
+#     queueNodes = [startNode]
+#     while len(queueNodes) != 0:
+#         # print("Actual queue: " + str(queueNodes))
+#         currentNode = queueNodes.pop()
+#         if (currentNode.isFinalState()):
+#             print("Solution:")
+#             currentNode.printPath()
+#             nrSearchedSolutions -= 1
+#             if nrSearchedSolutions == 0:
+#                 return
+#         succesors = currentNode.getSuccessors()
+#         queueNodes.extend(succesors)
+
+21 10 2
+3 4 5
+1 1 2
+14 7 1
+basic
+
+5 11 6
+2 3 4
+1 1 1
+5 5 2
